@@ -1,21 +1,45 @@
-import { Button } from "@/components/ui/button"
+import * as React from "react"
 
-export function App() {
+import { AppSidebar, type View } from "@/components/app-sidebar"
+import { ChatWidget } from "@/components/chat-widget"
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import { TooltipProvider } from "@/components/ui/tooltip"
+import { briefs } from "@/lib/briefs"
+import { tasks as initialTasks } from "@/lib/tasks"
+import { BriefPage } from "@/pages/brief-page"
+import { TasksPage } from "@/pages/tasks-page"
+
+export default function App() {
+  const [view, setView] = React.useState<View>("brief")
+  const [tasks, setTasks] = React.useState(initialTasks)
+
+  const toggleTask = (id: number) => {
+    setTasks((current) =>
+      current.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    )
+  }
+
+  const openTaskCount = tasks.filter((task) => !task.completed).length
+
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
+    <TooltipProvider>
+      <SidebarProvider>
+        <AppSidebar
+          view={view}
+          onViewChange={setView}
+          openTaskCount={openTaskCount}
+        />
+        <SidebarInset>
+          {view === "tasks" ? (
+            <TasksPage tasks={tasks} onToggle={toggleTask} />
+          ) : (
+            <BriefPage brief={briefs[0]} tasks={tasks} onToggle={toggleTask} />
+          )}
+        </SidebarInset>
+      </SidebarProvider>
+      <ChatWidget tasks={tasks} onToggle={toggleTask} />
+    </TooltipProvider>
   )
 }
-
-export default App
