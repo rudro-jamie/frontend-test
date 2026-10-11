@@ -6,7 +6,7 @@ import {
   TaskCreatedAt,
   TaskDueDate,
   TaskTitle,
-} from "@/components/assesment/task-fields"
+} from "@/components/assessment/task-fields"
 import { PriorityIcon } from "@/components/priority-icon"
 import { Checkbox } from "@/components/ui/checkbox"
 import { briefs } from "@/lib/briefs"

@@ -1,4 +1,4 @@
-import { TaskList } from "@/components/assesment/lists/task-list"
+import { TaskList } from "@/components/assessment/lists/task-list"
 import { PageHeader } from "@/components/page-header"
 import type { Task } from "@/lib/types"
 

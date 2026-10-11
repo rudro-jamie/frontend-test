@@ -1,4 +1,4 @@
-import { BriefTaskList } from "@/components/assesment/lists/brief-task-list"
+import { BriefTaskList } from "@/components/assessment/lists/brief-task-list"
 import { PageHeader } from "@/components/page-header"
 import { formatLongDate } from "@/lib/format"
 import type { Brief, Task } from "@/lib/types"

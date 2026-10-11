@@ -1,7 +1,7 @@
 import * as React from "react"
 import { ArrowUpIcon, BotIcon, XIcon } from "lucide-react"
 
-import { CompactTaskList } from "@/components/assesment/lists/compact-task-list"
+import { CompactTaskList } from "@/components/assessment/lists/compact-task-list"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {

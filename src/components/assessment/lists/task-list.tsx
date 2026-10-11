@@ -1,4 +1,4 @@
-import { TaskItem } from "@/components/assesment/task-item"
+import { TaskItem } from "@/components/assessment/task-item"
 import type { Task } from "@/lib/types"
 
 type TaskListProps = {
